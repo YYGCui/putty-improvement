@@ -528,6 +528,7 @@ struct config_tag {
     char ttymodes[768];		       /* MODE\tVvalue\0MODE\tA\0\0 */
     char environmt[1024];	       /* VAR\tvalue\0VAR\tvalue\0\0 */
     char username[100];
+	char password[100];
     int username_from_env;
     char localusername[100];
     int rfc_environ;
