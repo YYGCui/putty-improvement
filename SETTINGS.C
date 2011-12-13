@@ -303,11 +303,11 @@ static void wprefs(void *sesskey, char *name,
     for (maxlen = i = 0; i < nvals; i++) {
 	const char *s = val2key(mapping, nvals, array[i]);
 	if (s) {
-            maxlen += 1 + strlen(s);
+            maxlen += (maxlen > 0 ? 1 : 0) + strlen(s);
         }
     }
 
-    buf = snewn(maxlen, char);
+    buf = snewn(maxlen + 1, char);
     p = buf;
 
     for (i = 0; i < nvals; i++) {
@@ -317,7 +317,8 @@ static void wprefs(void *sesskey, char *name,
 	}
     }
 
-    assert(p - buf == maxlen - 1);     /* maxlen counted the NUL */
+    assert(p - buf == maxlen);
+    *p = '\0';
 
     write_setting_s(sesskey, name, buf);
 
@@ -385,7 +386,6 @@ void save_open_settings(void *sesskey, Config *cfg)
     write_setting_s(sesskey, "ProxyTelnetCommand", cfg->proxy_telnet_command);
     wmap(sesskey, "Environment", cfg->environmt, lenof(cfg->environmt));
     write_setting_s(sesskey, "UserName", cfg->username);
-    write_setting_s(sesskey, "PassWord", cfg->password);
     write_setting_i(sesskey, "UserNameFromEnvironment", cfg->username_from_env);
     write_setting_s(sesskey, "LocalUserName", cfg->localusername);
     write_setting_i(sesskey, "NoPTY", cfg->nopty);
@@ -667,7 +667,6 @@ void load_open_settings(void *sesskey, Config *cfg)
 	 cfg->proxy_telnet_command, sizeof(cfg->proxy_telnet_command));
     gppmap(sesskey, "Environment", "", cfg->environmt, lenof(cfg->environmt));
     gpps(sesskey, "UserName", "", cfg->username, sizeof(cfg->username));
-    gpps(sesskey, "PassWord", "", cfg->password, sizeof(cfg->password));
     gppi(sesskey, "UserNameFromEnvironment", 0, &cfg->username_from_env);
     gpps(sesskey, "LocalUserName", "", cfg->localusername,
 	 sizeof(cfg->localusername));
