@@ -413,7 +413,7 @@ Linker script and memory map
                 0x00000000                __dll_characteristics__ = 0x0
 LOAD d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../crt2.o
 LOAD d:/mingw/bin/../lib/gcc/mingw32/4.5.2/crtbegin.o
-LOAD be_none.o
+LOAD be_ssh.o
 LOAD cmdline.o
 LOAD cproxy.o
 LOAD int64.o
@@ -505,7 +505,7 @@ LOAD d:/mingw/bin/../lib/gcc/mingw32/4.5.2/crtend.o
  .text          0x004012f0       0xd0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/crtbegin.o
                 0x004012f0                __gcc_register_frame
                 0x0040137c                __gcc_deregister_frame
- .text          0x004013c0        0x0 be_none.o
+ .text          0x004013c0        0x0 be_ssh.o
  .text          0x004013c0     0x1698 cmdline.o
                 0x0040146c                cmdline_cleanup
                 0x00401500                cmdline_get_passwd_input
@@ -631,753 +631,752 @@ LOAD d:/mingw/bin/../lib/gcc/mingw32/4.5.2/crtend.o
                 0x0040c504                sftp_senddata
                 0x0040c530                cmdline_error
                 0x0040c5a4                psftp_main
- .text          0x0040c96c     0x371c settings.o
-                0x0040d0bc                backend_from_name
-                0x0040d104                backend_from_proto
-                0x0040d130                get_remote_username
-                0x0040d1c8                save_open_settings
-                0x0040e8fc                save_settings
-                0x0040e944                load_open_settings
-                0x0040fdd0                load_settings
-                0x0040fe24                do_defaults
-                0x0040fe30                get_sesslist
- .text          0x00410088     0x1cd4 sftp.o
-                0x00410814                sftp_send
-                0x00410894                sftp_recv
-                0x00410958                sftp_cleanup_request
-                0x0041097c                sftp_register
-                0x0041098c                sftp_find_request
-                0x00410a34                fxp_error
-                0x00410a40                fxp_error_type
-                0x00410a4c                fxp_init
-                0x00410b2c                fxp_realpath_send
-                0x00410b70                fxp_realpath_recv
-                0x00410c2c                fxp_open_send
-                0x00410c7c                fxp_open_recv
-                0x00410d20                fxp_opendir_send
-                0x00410d60                fxp_opendir_recv
-                0x00410e04                fxp_close_send
-                0x00410e64                fxp_close_recv
-                0x00410e8c                fxp_mkdir_send
-                0x00410ed4                fxp_mkdir_recv
-                0x00410f0c                fxp_rmdir_send
-                0x00410f4c                fxp_rmdir_recv
-                0x00410f84                fxp_remove_send
-                0x00410fc4                fxp_remove_recv
-                0x00410ffc                fxp_rename_send
-                0x00411044                fxp_rename_recv
-                0x0041107c                fxp_stat_send
-                0x004110bc                fxp_stat_recv
-                0x00411138                fxp_fstat_send
-                0x00411184                fxp_fstat_recv
-                0x00411200                fxp_setstat_send
-                0x0041125c                fxp_setstat_recv
-                0x00411294                fxp_fsetstat_send
-                0x00411304                fxp_fsetstat_recv
-                0x0041133c                fxp_read_send
-                0x004113a0                fxp_read_recv
-                0x00411454                fxp_readdir_send
-                0x004114a0                fxp_readdir_recv
-                0x004116ac                fxp_write_send
-                0x00411718                fxp_write_recv
-                0x00411750                fxp_free_names
-                0x004117a8                fxp_dup_name
-                0x004117fc                fxp_free_name
-                0x00411828                fxp_get_userdata
-                0x00411834                fxp_set_userdata
-                0x00411844                xfer_done
-                0x0041186c                xfer_download_queue
-                0x00411964                xfer_download_init
-                0x00411990                xfer_download_gotpkt
-                0x00411b0c                xfer_set_error
-                0x00411b1c                xfer_download_data
-                0x00411bb4                xfer_upload_init
-                0x00411bd4                xfer_upload_ready
-                0x00411be8                xfer_upload_data
-                0x00411ca4                xfer_upload_gotpkt
-                0x00411d18                xfer_cleanup
- .text          0x00411d5c    0x11d7c ssh.o
-                0x00423568                sshfwd_close
-                0x00423858                sshfwd_write
-                0x004238f8                sshfwd_unthrottle
-                0x00423970                new_sock_channel
-                0x004239c8                ssh_send_port_open
-                0x00423ac8                ssh_fallback_cmd
- .text          0x00423ad8     0x24c0 sshaes.o
-                0x00425870                aes_iv
-                0x00425aec                aes_ssh2_decrypt_blk
-                0x00425bf8                aes_ssh2_encrypt_blk
-                0x00425c10                aes_free_context
-                0x00425c1c                aes_make_context
-                0x00425ec0                aes128_key
-                0x00425ed8                aes192_key
-                0x00425ef0                aes256_key
-                0x00425f08                aes256_encrypt_pubkey
-                0x00425f50                aes256_decrypt_pubkey
- .text          0x00425f98      0x1fc ssharcf.o
- .text          0x00426194      0xf74 sshblowf.o
- .text          0x00427108     0x2c08 sshbn.o
-                0x00427cd8                bn_restore_invariant
-                0x00427cfc                copybn
-                0x00427d38                freebn
-                0x00427d5c                modmul
-                0x00428158                decbn
-                0x004281a8                bignum_from_bytes
-                0x00428270                ssh1_read_bignum
-                0x004282d8                bignum_bitcount
-                0x00428304                ssh1_bignum_length
-                0x00428330                ssh2_bignum_length
-                0x0042835c                bignum_byte
-                0x004283bc                bignum_bit
-                0x00428414                bignum_set_bit
-                0x00428470                bn_power_2
-                0x004284b4                ssh1_write_bignum
-                0x0042853c                bignum_cmp
-                0x004285a4                bignum_rshift
-                0x0042866c                bigmuladd
-                0x004288f0                bigmul
-                0x00428914                bigadd
-                0x004289d0                bigsub
-                0x00428ab8                bignum_bitmask
-                0x00428b38                bignum_from_long
-                0x00428b6c                bignum_add_long
-                0x00428bf8                bignum_mod_short
-                0x00428cbc                diagbn
-                0x00428df4                bigdiv
-                0x00428e20                bigmod
-                0x00428e50                modpow_simple
-                0x00429350                biggcd
-                0x004293e0                modinv
-                0x004295c8                modpow
-                0x00429b64                bignum_decimal
- .text          0x00429d10       0x6c sshcrc.o
-                0x00429d10                crc32_update
-                0x00429d44                crc32_compute
- .text          0x00429d7c      0x3f4 sshcrcda.o
-                0x00429e54                crcda_make_context
-                0x00429e80                crcda_free_context
-                0x00429eb4                detect_attack
- .text          0x0042a170     0x2318 sshdes.o
-                0x0042bf70                des3_decrypt_pubkey
-                0x0042c074                des3_encrypt_pubkey
-                0x0042c178                des3_decrypt_pubkey_ossh
-                0x0042c2cc                des3_encrypt_pubkey_ossh
-                0x0042c420                des_encrypt_xdmauth
-                0x0042c454                des_decrypt_xdmauth
- .text          0x0042c488      0x2ec sshdh.o
-                0x0042c488                dh_setup_group
-                0x0042c50c                dh_setup_gex
-                0x0042c57c                dh_cleanup
-                0x0042c5d4                dh_create_e
-                0x0042c750                dh_find_K
- .text          0x0042c774     0x1768 sshdss.o
- .text          0x0042dedc      0x460 sshgssc.o
-                0x0042e2ec                ssh_gssapi_bind_fns
- .text          0x0042e33c      0xe1c sshmd5.o
-                0x0042e358                hmacmd5_free_context
-                0x0042e364                hmacmd5_make_context
-                0x0042e380                MD5Init
-                0x0042e3b8                MD5Update
-                0x0042ec88                MD5Final
-                0x0042ef4c                MD5Simple
-                0x0042efb4                hmacmd5_key
-                0x0042f130                hmacmd5_do_hmac
- .text          0x0042f158     0x2430 sshpubk.o
-                0x0042f6c0                loadrsakey
-                0x0042f770                rsakey_encrypted
-                0x0042f804                rsakey_pubblob
-                0x0042f8fc                saversakey
-                0x0042fc3c                base64_decode_atom
-                0x0042fe70                find_pubkey_alg
-                0x0042feb4                ssh2_load_userkey
-                0x00430918                ssh2_userkey_loadpub
-                0x00430b18                ssh2_userkey_encrypted
-                0x00430c7c                base64_lines
-                0x00430c9c                base64_encode
-                0x00430d34                ssh2_save_userkey
-                0x00431430                key_type
-                0x0043156c                key_type_to_str
- .text          0x00431588      0x488 sshrand.o
-                0x00431728                random_add_noise
-                0x00431874                random_add_heavynoise
-                0x004318d4                random_ref
-                0x00431938                random_unref
-                0x00431980                random_byte
-                0x004319b0                random_get_savedata
- .text          0x00431a10     0x2268 sshrsa.o
-                0x00432a68                makekey
-                0x00432b88                makeprivate
-                0x00432b98                rsaencrypt
-                0x00432c7c                crt_modpow
-                0x004332ac                rsadecrypt
-                0x004332c0                rsastr_len
-                0x00433320                rsastr_fmt
-                0x004334b0                rsa_fingerprint
-                0x004336a4                rsa_verify
-                0x00433810                rsa_public_blob
-                0x004338c0                rsa_public_blob_len
-                0x00433928                freersakey
-                0x00433a80                ssh_rsakex_newkey
-                0x00433a8c                ssh_rsakex_freekey
-                0x00433a98                ssh_rsakex_klen
-                0x00433ab0                ssh_rsakex_encrypt
- .text          0x00433c78      0xaf8 sshsh256.o
-                0x00433ce0                SHA256_Core_Init
-                0x00433d20                SHA256_Block
-                0x0043445c                SHA256_Init
-                0x004344b0                SHA256_Bytes
-                0x004345c4                SHA256_Final
-                0x004346ec                SHA256_Simple
- .text          0x00434770     0x1c40 sshsh512.o
-                0x00434770                SHA512_Init
-                0x004347cc                SHA512_Bytes
-                0x00436190                SHA512_Final
-                0x00436330                SHA512_Simple
- .text          0x004363b0      0xa1c sshsha.o
-                0x00436448                SHATransform
-                0x00436658                SHA_Init
-                0x00436698                SHA_Bytes
-                0x00436950                SHA_Final
-                0x00436ce8                SHA_Simple
-                0x00436d58                hmac_sha1_simple
- .text          0x00436dcc     0x18fc sshzlib.o
-                0x0043781c                zlib_compress_init
-                0x004378ec                zlib_decompress_init
-                0x00437a38                zlib_decompress_cleanup
-                0x00437a94                zlib_compress_cleanup
-                0x00437b50                zlib_decompress_block
-                0x004382e8                zlib_compress_block
- .text          0x004386c8      0x284 timing.o
-                0x0043877c                schedule_timer
-                0x00438838                run_timers
-                0x00438928                expire_timer_context
- .text          0x0043894c     0x11cc tree234.o
-                0x00439790                newtree234
-                0x004397b8                freetree234
-                0x004397d4                count234
-                0x004397ec                add234
-                0x00439810                addpos234
-                0x00439834                index234
-                0x004398b0                findrelpos234
-                0x00439a08                find234
-                0x00439a3c                findrel234
-                0x00439a6c                findpos234
-                0x00439a9c                delpos234
-                0x00439acc                del234
- .text          0x00439b18        0x0 version.o
- .text          0x00439b18      0x2fc wildcard.o
-                0x00439ca0                wc_error
-                0x00439cc8                wc_match
-                0x00439dc8                wc_unescape
- .text          0x00439e14      0x804 wincons.o
-                0x00439e44                cleanup_exit
-                0x00439e60                set_busy_status
-                0x00439e68                notify_remote_exit
-                0x00439e70                timer_change_notify
-                0x00439e78                verify_ssh_host_key
-                0x0043a04c                update_specials_menu
-                0x0043a054                askalg
-                0x0043a178                askappend
-                0x0043a298                old_keyfile_warning
-                0x0043a2c8                pgp_fingerprints
-                0x0043a2f8                console_provide_logctx
-                0x0043a308                logevent
-                0x0043a31c                console_get_userpass_input
-                0x0043a610                frontend_keypress
- .text          0x0043a618       0xf8 windefs.o
-                0x0043a618                platform_default_fontspec
-                0x0043a67c                platform_default_filename
-                0x0043a6dc                platform_default_s
-                0x0043a708                platform_default_i
- .text          0x0043a710      0x9b8 wingss.o
-                0x0043abc8                ssh_gss_setup
-                0x0043b058                ssh_gss_cleanup
- .text          0x0043b0c8      0xa40 winhandl.o
-                0x0043b550                handle_input_new
-                0x0043b664                handle_output_new
-                0x0043b780                handle_write
-                0x0043b7dc                handle_get_events
-                0x0043b874                handle_free
-                0x0043b8ec                handle_got_event
-                0x0043ba64                handle_unthrottle
-                0x0043bac4                handle_backlog
-                0x0043bafc                handle_get_privdata
- .text          0x0043bb08      0x394 winmisc.o
-                0x0043bb08                platform_get_x_display
-                0x0043bb24                filename_from_str
-                0x0043bb6c                filename_to_str
-                0x0043bb74                filename_equal
-                0x0043bb9c                filename_is_null
-                0x0043bbac                init_winver
-                0x0043bbdc                load_system32_dll
-                0x0043bc80                get_username
-                0x0043bdcc                dputs
- .text          0x0043be9c     0x263c winnet.o
-                0x0043c580                sk_startup
-                0x0043c5c8                sk_init
-                0x0043cd54                sk_cleanup
-                0x0043cdd8                winsock_error_string
-                0x0043cdfc                sk_namelookup
-                0x0043d110                sk_nonamelookup
-                0x0043d180                sk_nextaddr
-                0x0043d1b8                sk_getaddr
-                0x0043d2c8                sk_hostname_is_local
-                0x0043d314                sk_address_is_local
-                0x0043d3d4                sk_addrtype
-                0x0043d410                sk_addrcopy
-                0x0043d4d8                sk_addr_free
-                0x0043d58c                sk_addr_dup
-                0x0043d598                sk_register
-                0x0043d680                sk_new
-                0x0043d77c                sk_newlistener
-                0x0043dad8                try_send
-                0x0043dd08                select_result
-                0x0043e284                net_pending_errors
-                0x0043e2f0                sk_addr_error
-                0x0043e2fc                socket_reselect_all
-                0x0043e348                first_socket
-                0x0043e380                next_socket
-                0x0043e3b4                socket_writable
-                0x0043e3f4                net_service_lookup
-                0x0043e42c                get_hostname
-                0x0043e498                platform_get_x11_unix_address
- .text          0x0043e4d8      0x2dc winnoise.o
-                0x0043e4d8                random_save_seed
-                0x0043e520                noise_get_heavy
-                0x0043e5d8                noise_get_light
-                0x0043e62c                noise_regular
-                0x0043e758                noise_ultralight
- .text          0x0043e7b4       0x18 winnojmp.o
-                0x0043e7b4                add_session_to_jumplist
-                0x0043e7bc                remove_session_from_jumplist
-                0x0043e7c4                clear_jumplist
- .text          0x0043e7cc      0x57c winpgntc.o
-                0x0043e7cc                agent_exists
-                0x0043e7f4                init_advapi
-                0x0043e91c                get_user_sid
-                0x0043eab0                agent_query
- .text          0x0043ed48      0x408 winproxy.o
-                0x0043ee00                localproxy_sentdata
-                0x0043ee2c                localproxy_gotdata
-                0x0043eec0                platform_new_connection
- .text          0x0043f150     0x101c winsftp.o
-                0x0043f180                get_ttymode
-                0x0043f188                get_userpass_input
-                0x0043f1d0                platform_get_x11_auth
-                0x0043f1d8                psftp_lcd
-                0x0043f274                psftp_getcwd
-                0x0043f2dc                open_existing_file
-                0x0043f438                read_from_file
-                0x0043f47c                close_rfile
-                0x0043f4a0                open_new_file
-                0x0043f510                open_existing_wfile
-                0x0043f5a8                write_to_file
-                0x0043f5ec                set_file_times
-                0x0043f670                close_wfile
-                0x0043f694                seek_file
-                0x0043f6f4                get_file_posn
-                0x0043f734                file_type
-                0x0043f75c                open_directory
-                0x0043f7e8                read_filename
-                0x0043f884                close_directory
-                0x0043f8b4                test_wildcard
-                0x0043f90c                begin_wildcard_matching
-                0x0043fa14                wildcard_get_filename
-                0x0043faac                finish_wildcard_matching
-                0x0043fae8                vet_filename
-                0x0043fb54                create_directory
-                0x0043fb7c                dir_file_cat
-                0x0043fba8                do_select
-                0x0043fc60                do_eventsel_loop
-                0x0043feac                ssh_sftp_loop_iteration
-                0x00440018                ssh_sftp_get_cmdline
-                0x00440148                main
- .text          0x0044016c     0x16cc winstore.o
-                0x004406d4                open_settings_w
-                0x004407ec                write_setting_s
-                0x0044083c                write_setting_i
-                0x0044087c                close_settings_w
-                0x00440890                open_settings_r
-                0x00440950                read_setting_s
-                0x004409a8                read_setting_i
-                0x00440a0c                read_setting_fontspec
-                0x00440b30                write_setting_fontspec
-                0x00440bfc                read_setting_filename
-                0x00440c30                write_setting_filename
-                0x00440c54                close_settings_r
-                0x00440fc8                del_settings
-                0x00441058                enum_settings_start
-                0x004410ac                enum_settings_next
-                0x004411c8                enum_settings_finish
-                0x004411ec                verify_host_key
-                0x00441530                store_host_key
-                0x004415f8                read_random_seed
-                0x0044166c                write_random_seed
-                0x004416bc                add_to_jumplist_registry
-                0x004416d0                remove_from_jumplist_registry
-                0x004416e4                get_jumplist_registry_entries
-                0x00441720                cleanup_all
- .text          0x00441838       0x88 wintime.o
-                0x00441838                ltime
- .text          0x004418c0     0x148c x11fwd.o
-                0x004419a4                x11_setup_display
-                0x00441f60                x11_free_display
-                0x00442034                x11_get_auth_from_authfile
-                0x00442374                x11_get_screen_number
-                0x004423c8                x11_init
-                0x00442520                x11_close
-                0x004425a0                x11_unthrottle
-                0x004425dc                x11_override_throttle
-                0x00442638                x11_send
- .text          0x00442d4c        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00412.o)
-                0x00442d4c                RegOpenKeyA@12
- .text          0x00442d54        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00423.o)
-                0x00442d54                RegQueryValueExA@24
- .text          0x00442d5c        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00386.o)
-                0x00442d5c                RegCloseKey@4
- .text          0x00442d64        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00245.o)
-                0x00442d64                GetUserNameA@8
- .text          0x00442d6c        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00196.o)
-                0x00442d6c                GetLengthSid@4
- .text          0x00442d74        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00083.o)
-                0x00442d74                CopySid@12
- .text          0x00442d7c        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00393.o)
-                0x00442d7c                RegDeleteKeyA@8
- .text          0x00442d84        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00400.o)
-                0x00442d84                RegEnumKeyA@16
- .text          0x00442d8c        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00389.o)
-                0x00442d8c                RegCreateKeyA@12
- .text          0x00442d94        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00434.o)
-                0x00442d94                RegSetValueExA@24
- .text          0x00442d9c        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00390.o)
-                0x00442d9c                RegCreateKeyExA@36
- .text          0x00442da4        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00397.o)
-                0x00442da4                RegDeleteValueA@8
- .text          0x00442dac        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgh.o)
- .text          0x00442dac        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgt.o)
- .text          0x00442dac        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libuser32.a(daois00259.o)
-                0x00442dac                GetForegroundWindow@0
- .text          0x00442db4        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libuser32.a(daois00224.o)
-                0x00442db4                GetCapture@0
- .text          0x00442dbc        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libuser32.a(daois00241.o)
-                0x00442dbc                GetClipboardOwner@0
- .text          0x00442dc4        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libuser32.a(daois00310.o)
-                0x00442dc4                GetQueueStatus@4
- .text          0x00442dcc        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libuser32.a(daois00247.o)
-                0x00442dcc                GetCursorPos@4
- .text          0x00442dd4        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libuser32.a(daois00210.o)
-                0x00442dd4                FindWindowA@8
- .text          0x00442ddc        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libuser32.a(daois00508.o)
-                0x00442ddc                SendMessageA@16
- .text          0x00442de4        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libuser32.a(daoih.o)
- .text          0x00442de4        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libuser32.a(daoit.o)
- *fill*         0x00442de4        0xc 00
- .text          0x00442df0      0x1d0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(tlssup.o)
-                0x00442df0                __tlregdtor
-                0x00442e40                __dyn_tls_init@12
- .text          0x00442fc0        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(CRTglob.o)
- .text          0x00442fc0        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(CRTfmode.o)
- .text          0x00442fc0        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(txtmode.o)
- .text          0x00442fc0       0xe0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(cpu_features.o)
-                0x00442fc0                __cpu_features_init
- .text          0x004430a0      0x2e0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(pseudo-reloc.o)
-                0x004431d0                _pei386_runtime_relocator
- .text          0x00443380       0xb0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(gccmain.o)
-                0x00443380                __do_global_dtors
-                0x004433b0                __do_global_ctors
-                0x00443410                __main
- .text          0x00443430       0x10 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(CRT_fp10.o)
-                0x00443430                fpreset
-                0x00443430                _fpreset
- .text          0x00443440        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(crtst.o)
- .text          0x00443440      0x210 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(tlsthrd.o)
-                0x004434c0                __mingw_TLScallback
-                0x00443550                ___w64_mingwthr_remove_key_dtor
-                0x004435e0                ___w64_mingwthr_add_key_dtor
- .text          0x00443650        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(pseudo-reloc-list.o)
- .text          0x00443650       0x34 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/libgcc.a(_chkstk.o)
-                0x00443650                _alloca
-                0x00443650                __chkstk
- .text          0x00443684      0x124 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/libgcc.a(_umoddi3.o)
-                0x00443684                __umoddi3
- .text          0x004437a8      0x110 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/libgcc.a(_udivdi3.o)
-                0x004437a8                __udivdi3
- .text          0x004438b8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/libgcc.a(_ctors.o)
- .text          0x004438b8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmoldname.a(dgzls00084.o)
-                0x004438b8                strnicmp
- .text          0x004438c0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmoldname.a(dgzls00081.o)
-                0x004438c0                stricmp
- .text          0x004438c8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmoldname.a(dgzlh.o)
- .text          0x004438c8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmoldname.a(dgzlt.o)
- .text          0x004438c8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00590.o)
- .text          0x004438c8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00383.o)
- .text          0x004438c8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00266.o)
- .text          0x004438c8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00055.o)
-                0x004438c8                __getmainargs
- .text          0x004438d0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00079.o)
-                0x004438d0                __p__fmode
- .text          0x004438d8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00077.o)
-                0x004438d8                __p__environ
- .text          0x004438e0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00147.o)
-                0x004438e0                _cexit
- .text          0x004438e8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00426.o)
-                0x004438e8                _setmode
- .text          0x004438f0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00706.o)
-                0x004438f0                signal
- .text          0x004438f8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00724.o)
-                0x004438f8                strncpy
- .text          0x00443900        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00715.o)
-                0x00443900                strcmp
- .text          0x00443908        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00714.o)
-                0x00443908                strchr
- .text          0x00443910        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00723.o)
-                0x00443910                strncmp
- .text          0x00443918        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00592.o)
-                0x00443918                atoi
- .text          0x00443920        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00618.o)
-                0x00443920                fopen
- .text          0x00443928        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00611.o)
-                0x00443928                fgetc
- .text          0x00443930        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00607.o)
-                0x00443930                fclose
- .text          0x00443938        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00137.o)
-                0x00443938                _assert
- .text          0x00443940        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00065.o)
- .text          0x00443940        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00392.o)
- .text          0x00443940        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00610.o)
-                0x00443940                fflush
- .text          0x00443948        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00633.o)
-                0x00443948                fwrite
- .text          0x00443950        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00720.o)
-                0x00443950                strftime
- .text          0x00443958        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00742.o)
-                0x00443958                tolower
- .text          0x00443960        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00619.o)
-                0x00443960                fprintf
- .text          0x00443968        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00709.o)
-                0x00443968                sprintf
- .text          0x00443970        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00268.o)
-                0x00443970                _isctype
- .text          0x00443978        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00732.o)
-                0x00443978                strtoul
- .text          0x00443980        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00731.o)
-                0x00443980                strtol
- .text          0x00443988        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00676.o)
-                0x00443988                malloc
- .text          0x00443990        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00717.o)
-                0x00443990                strcpy
- .text          0x00443998        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00698.o)
-                0x00443998                realloc
- .text          0x004439a0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00490.o)
-                0x004439a0                _vsnprintf
- .text          0x004439a8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00625.o)
-                0x004439a8                free
- .text          0x004439b0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00613.o)
-                0x004439b0                fgets
- .text          0x004439b8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00683.o)
-                0x004439b8                memmove
- .text          0x004439c0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00712.o)
-                0x004439c0                sscanf
- .text          0x004439c8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00692.o)
-                0x004439c8                puts
- .text          0x004439d0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00689.o)
-                0x004439d0                printf
- .text          0x004439d8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00736.o)
-                0x004439d8                system
- .text          0x004439e0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00726.o)
-                0x004439e0                strrchr
- .text          0x004439e8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00727.o)
-                0x004439e8                strspn
- .text          0x004439f0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00718.o)
-                0x004439f0                strcspn
- .text          0x004439f8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00695.o)
-                0x004439f8                qsort
- .text          0x00443a00        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00621.o)
-                0x00443a00                fputs
- .text          0x00443a08        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00748.o)
-                0x00443a08                vfprintf
- .text          0x00443a10        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00604.o)
-                0x00443a10                exit
- .text          0x00443a18        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00681.o)
-                0x00443a18                memcmp
- .text          0x00443a20        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00620.o)
-                0x00443a20                fputc
- .text          0x00443a28        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00680.o)
-                0x00443a28                memchr
- .text          0x00443a30        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00583.o)
-                0x00443a30                abort
- .text          0x00443a38        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00746.o)
-                0x00443a38                ungetc
- .text          0x00443a40        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00624.o)
-                0x00443a40                fread
- .text          0x00443a48        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00637.o)
-                0x00443a48                getenv
- .text          0x00443a50        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00699.o)
-                0x00443a50                remove
- .text          0x00443a58        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00739.o)
-                0x00443a58                time
- .text          0x00443a60        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00538.o)
- .text          0x00443a60        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00682.o)
-                0x00443a60                memcpy
- .text          0x00443a68        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00595.o)
-                0x00443a68                calloc
- .text          0x00443a70        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duymh.o)
- .text          0x00443a70        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duymt.o)
- .text          0x00443a70        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01140.o)
-                0x00443a70                SetUnhandledExceptionFilter@4
- .text          0x00443a78        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00279.o)
-                0x00443a78                ExitProcess@4
- .text          0x00443a80        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00529.o)
-                0x00443a80                GetModuleHandleA@4
- .text          0x00443a88        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00577.o)
-                0x00443a88                GetProcAddress@8
- .text          0x00443a90        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00656.o)
-                0x00443a90                GetTickCount@0
- .text          0x00443a98        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01267.o)
-                0x00443a98                WriteFile@20
- .text          0x00443aa0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00608.o)
-                0x00443aa0                GetStdHandle@4
- .text          0x00443aa8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00426.o)
-                0x00443aa8                GetConsoleMode@8
- .text          0x00443ab0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01037.o)
-                0x00443ab0                SetConsoleMode@8
- .text          0x00443ab8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00947.o)
-                0x00443ab8                ReadFile@20
- .text          0x00443ac0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00817.o)
-                0x00443ac0                LoadLibraryA@4
- .text          0x00443ac8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00352.o)
-                0x00443ac8                FreeLibrary@4
- .text          0x00443ad0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00082.o)
-                0x00443ad0                CloseHandle@4
- .text          0x00443ad8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01065.o)
-                0x00443ad8                SetEvent@4
- .text          0x00443ae0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01223.o)
-                0x00443ae0                WaitForSingleObject@8
- .text          0x00443ae8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00510.o)
-                0x00443ae8                GetLastError@0
- .text          0x00443af0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00564.o)
-                0x00443af0                GetOverlappedResult@16
- .text          0x00443af8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00129.o)
-                0x00443af8                CreateEventA@16
- .text          0x00443b00        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00179.o)
-                0x00443b00                CreateThread@24
- .text          0x00443b08        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00671.o)
-                0x00443b08                GetVersionExA@4
- .text          0x00443b10        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00619.o)
-                0x00443b10                GetSystemDirectoryA@8
- .text          0x00443b18        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00016.o)
-                0x00443b18                AllocConsole@0
- .text          0x00443b20        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00682.o)
-                0x00443b20                GetWindowsDirectoryA@8
- .text          0x00443b28        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00304.o)
-                0x00443b28                FindFirstFileA@8
- .text          0x00443b30        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00321.o)
-                0x00443b30                FindNextFileA@8
- .text          0x00443b38        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00300.o)
-                0x00443b38                FindClose@4
- .text          0x00443b40        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00447.o)
-                0x00443b40                GetCurrentProcessId@0
- .text          0x00443b48        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00627.o)
-                0x00443b48                GetSystemTime@4
- .text          0x00443b50        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00628.o)
-                0x00443b50                GetSystemTimeAdjustment@12
- .text          0x00443b58        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00699.o)
-                0x00443b58                GlobalMemoryStatus@4
- .text          0x00443b60        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00450.o)
-                0x00443b60                GetCurrentThread@0
- .text          0x00443b68        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00653.o)
-                0x00443b68                GetThreadTimes@20
- .text          0x00443b70        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00446.o)
-                0x00443b70                GetCurrentProcess@0
- .text          0x00443b78        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00590.o)
-                0x00443b78                GetProcessTimes@20
- .text          0x00443b80        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00922.o)
-                0x00443b80                QueryPerformanceCounter@4
- .text          0x00443b88        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00885.o)
-                0x00443b88                OpenProcess@12
- .text          0x00443b90        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00829.o)
-                0x00443b90                LocalFree@4
- .text          0x00443b98        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00825.o)
-                0x00443b98                LocalAlloc@8
- .text          0x00443ba0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00451.o)
-                0x00443ba0                GetCurrentThreadId@0
- .text          0x00443ba8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00136.o)
-                0x00443ba8                CreateFileMappingA@24
- .text          0x00443bb0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00844.o)
-                0x00443bb0                MapViewOfFile@20
- .text          0x00443bb8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01188.o)
-                0x00443bb8                UnmapViewOfFile@4
- .text          0x00443bc0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00160.o)
-                0x00443bc0                CreatePipe@16
- .text          0x00443bc8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01088.o)
-                0x00443bc8                SetHandleInformation@12
- .text          0x00443bd0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00163.o)
-                0x00443bd0                CreateProcessA@40
- .text          0x00443bd8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01052.o)
-                0x00443bd8                SetCurrentDirectoryA@4
- .text          0x00443be0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00347.o)
-                0x00443be0                FormatMessageA@28
- .text          0x00443be8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00444.o)
-                0x00443be8                GetCurrentDirectoryA@8
- .text          0x00443bf0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00135.o)
-                0x00443bf0                CreateFileA@28
- .text          0x00443bf8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00492.o)
-                0x00443bf8                GetFileSize@8
- .text          0x00443c00        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00494.o)
-                0x00443c00                GetFileTime@16
- .text          0x00443c08        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01082.o)
-                0x00443c08                SetFileTime@16
- .text          0x00443c10        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01078.o)
-                0x00443c10                SetFilePointer@16
- .text          0x00443c18        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00481.o)
-                0x00443c18                GetFileAttributesA@4
- .text          0x00443c20        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00123.o)
-                0x00443c20                CreateDirectoryA@8
- .text          0x00443c28        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01221.o)
-                0x00443c28                WaitForMultipleObjects@16
- .text          0x00443c30        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00473.o)
-                0x00443c30                GetEnvironmentVariableA@12
- .text          0x00443c38        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00511.o)
-                0x00443c38                GetLocalTime@4
- .text          0x00443c40        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01215.o)
-                0x00443c40                VirtualQuery@12
- .text          0x00443c48        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01213.o)
-                0x00443c48                VirtualProtect@16
- .text          0x00443c50        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01173.o)
-                0x00443c50                TlsGetValue@4
- .text          0x00443c58        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00207.o)
-                0x00443c58                DeleteCriticalSection@4
- .text          0x00443c60        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00734.o)
-                0x00443c60                InitializeCriticalSection@4
- .text          0x00443c68        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00236.o)
-                0x00443c68                EnterCriticalSection@4
- .text          0x00443c70        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00814.o)
-                0x00443c70                LeaveCriticalSection@4
- .text          0x00443c78        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchdh.o)
- .text          0x00443c78        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchdt.o)
- .text          0x00443c78       0x1c d:/mingw/bin/../lib/gcc/mingw32/4.5.2/crtend.o
+ .text          0x0040c96c     0x372c settings.o
+                0x0040d0cc                backend_from_name
+                0x0040d114                backend_from_proto
+                0x0040d140                get_remote_username
+                0x0040d1d8                save_open_settings
+                0x0040e90c                save_settings
+                0x0040e954                load_open_settings
+                0x0040fde0                load_settings
+                0x0040fe34                do_defaults
+                0x0040fe40                get_sesslist
+ .text          0x00410098     0x1cd4 sftp.o
+                0x00410824                sftp_send
+                0x004108a4                sftp_recv
+                0x00410968                sftp_cleanup_request
+                0x0041098c                sftp_register
+                0x0041099c                sftp_find_request
+                0x00410a44                fxp_error
+                0x00410a50                fxp_error_type
+                0x00410a5c                fxp_init
+                0x00410b3c                fxp_realpath_send
+                0x00410b80                fxp_realpath_recv
+                0x00410c3c                fxp_open_send
+                0x00410c8c                fxp_open_recv
+                0x00410d30                fxp_opendir_send
+                0x00410d70                fxp_opendir_recv
+                0x00410e14                fxp_close_send
+                0x00410e74                fxp_close_recv
+                0x00410e9c                fxp_mkdir_send
+                0x00410ee4                fxp_mkdir_recv
+                0x00410f1c                fxp_rmdir_send
+                0x00410f5c                fxp_rmdir_recv
+                0x00410f94                fxp_remove_send
+                0x00410fd4                fxp_remove_recv
+                0x0041100c                fxp_rename_send
+                0x00411054                fxp_rename_recv
+                0x0041108c                fxp_stat_send
+                0x004110cc                fxp_stat_recv
+                0x00411148                fxp_fstat_send
+                0x00411194                fxp_fstat_recv
+                0x00411210                fxp_setstat_send
+                0x0041126c                fxp_setstat_recv
+                0x004112a4                fxp_fsetstat_send
+                0x00411314                fxp_fsetstat_recv
+                0x0041134c                fxp_read_send
+                0x004113b0                fxp_read_recv
+                0x00411464                fxp_readdir_send
+                0x004114b0                fxp_readdir_recv
+                0x004116bc                fxp_write_send
+                0x00411728                fxp_write_recv
+                0x00411760                fxp_free_names
+                0x004117b8                fxp_dup_name
+                0x0041180c                fxp_free_name
+                0x00411838                fxp_get_userdata
+                0x00411844                fxp_set_userdata
+                0x00411854                xfer_done
+                0x0041187c                xfer_download_queue
+                0x00411974                xfer_download_init
+                0x004119a0                xfer_download_gotpkt
+                0x00411b1c                xfer_set_error
+                0x00411b2c                xfer_download_data
+                0x00411bc4                xfer_upload_init
+                0x00411be4                xfer_upload_ready
+                0x00411bf8                xfer_upload_data
+                0x00411cb4                xfer_upload_gotpkt
+                0x00411d28                xfer_cleanup
+ .text          0x00411d6c    0x11e48 ssh.o
+                0x00423644                sshfwd_close
+                0x00423934                sshfwd_write
+                0x004239d4                sshfwd_unthrottle
+                0x00423a4c                new_sock_channel
+                0x00423aa4                ssh_send_port_open
+                0x00423ba4                ssh_fallback_cmd
+ .text          0x00423bb4     0x24c0 sshaes.o
+                0x0042594c                aes_iv
+                0x00425bc8                aes_ssh2_decrypt_blk
+                0x00425cd4                aes_ssh2_encrypt_blk
+                0x00425cec                aes_free_context
+                0x00425cf8                aes_make_context
+                0x00425f9c                aes128_key
+                0x00425fb4                aes192_key
+                0x00425fcc                aes256_key
+                0x00425fe4                aes256_encrypt_pubkey
+                0x0042602c                aes256_decrypt_pubkey
+ .text          0x00426074      0x1fc ssharcf.o
+ .text          0x00426270      0xf74 sshblowf.o
+ .text          0x004271e4     0x2c08 sshbn.o
+                0x00427db4                bn_restore_invariant
+                0x00427dd8                copybn
+                0x00427e14                freebn
+                0x00427e38                modmul
+                0x00428234                decbn
+                0x00428284                bignum_from_bytes
+                0x0042834c                ssh1_read_bignum
+                0x004283b4                bignum_bitcount
+                0x004283e0                ssh1_bignum_length
+                0x0042840c                ssh2_bignum_length
+                0x00428438                bignum_byte
+                0x00428498                bignum_bit
+                0x004284f0                bignum_set_bit
+                0x0042854c                bn_power_2
+                0x00428590                ssh1_write_bignum
+                0x00428618                bignum_cmp
+                0x00428680                bignum_rshift
+                0x00428748                bigmuladd
+                0x004289cc                bigmul
+                0x004289f0                bigadd
+                0x00428aac                bigsub
+                0x00428b94                bignum_bitmask
+                0x00428c14                bignum_from_long
+                0x00428c48                bignum_add_long
+                0x00428cd4                bignum_mod_short
+                0x00428d98                diagbn
+                0x00428ed0                bigdiv
+                0x00428efc                bigmod
+                0x00428f2c                modpow_simple
+                0x0042942c                biggcd
+                0x004294bc                modinv
+                0x004296a4                modpow
+                0x00429c40                bignum_decimal
+ .text          0x00429dec       0x6c sshcrc.o
+                0x00429dec                crc32_update
+                0x00429e20                crc32_compute
+ .text          0x00429e58      0x3f4 sshcrcda.o
+                0x00429f30                crcda_make_context
+                0x00429f5c                crcda_free_context
+                0x00429f90                detect_attack
+ .text          0x0042a24c     0x2318 sshdes.o
+                0x0042c04c                des3_decrypt_pubkey
+                0x0042c150                des3_encrypt_pubkey
+                0x0042c254                des3_decrypt_pubkey_ossh
+                0x0042c3a8                des3_encrypt_pubkey_ossh
+                0x0042c4fc                des_encrypt_xdmauth
+                0x0042c530                des_decrypt_xdmauth
+ .text          0x0042c564      0x2ec sshdh.o
+                0x0042c564                dh_setup_group
+                0x0042c5e8                dh_setup_gex
+                0x0042c658                dh_cleanup
+                0x0042c6b0                dh_create_e
+                0x0042c82c                dh_find_K
+ .text          0x0042c850     0x1768 sshdss.o
+ .text          0x0042dfb8      0x460 sshgssc.o
+                0x0042e3c8                ssh_gssapi_bind_fns
+ .text          0x0042e418      0xe1c sshmd5.o
+                0x0042e434                hmacmd5_free_context
+                0x0042e440                hmacmd5_make_context
+                0x0042e45c                MD5Init
+                0x0042e494                MD5Update
+                0x0042ed64                MD5Final
+                0x0042f028                MD5Simple
+                0x0042f090                hmacmd5_key
+                0x0042f20c                hmacmd5_do_hmac
+ .text          0x0042f234     0x2430 sshpubk.o
+                0x0042f79c                loadrsakey
+                0x0042f84c                rsakey_encrypted
+                0x0042f8e0                rsakey_pubblob
+                0x0042f9d8                saversakey
+                0x0042fd18                base64_decode_atom
+                0x0042ff4c                find_pubkey_alg
+                0x0042ff90                ssh2_load_userkey
+                0x004309f4                ssh2_userkey_loadpub
+                0x00430bf4                ssh2_userkey_encrypted
+                0x00430d58                base64_lines
+                0x00430d78                base64_encode
+                0x00430e10                ssh2_save_userkey
+                0x0043150c                key_type
+                0x00431648                key_type_to_str
+ .text          0x00431664      0x488 sshrand.o
+                0x00431804                random_add_noise
+                0x00431950                random_add_heavynoise
+                0x004319b0                random_ref
+                0x00431a14                random_unref
+                0x00431a5c                random_byte
+                0x00431a8c                random_get_savedata
+ .text          0x00431aec     0x2268 sshrsa.o
+                0x00432b44                makekey
+                0x00432c64                makeprivate
+                0x00432c74                rsaencrypt
+                0x00432d58                crt_modpow
+                0x00433388                rsadecrypt
+                0x0043339c                rsastr_len
+                0x004333fc                rsastr_fmt
+                0x0043358c                rsa_fingerprint
+                0x00433780                rsa_verify
+                0x004338ec                rsa_public_blob
+                0x0043399c                rsa_public_blob_len
+                0x00433a04                freersakey
+                0x00433b5c                ssh_rsakex_newkey
+                0x00433b68                ssh_rsakex_freekey
+                0x00433b74                ssh_rsakex_klen
+                0x00433b8c                ssh_rsakex_encrypt
+ .text          0x00433d54      0xaf8 sshsh256.o
+                0x00433dbc                SHA256_Core_Init
+                0x00433dfc                SHA256_Block
+                0x00434538                SHA256_Init
+                0x0043458c                SHA256_Bytes
+                0x004346a0                SHA256_Final
+                0x004347c8                SHA256_Simple
+ .text          0x0043484c     0x1c40 sshsh512.o
+                0x0043484c                SHA512_Init
+                0x004348a8                SHA512_Bytes
+                0x0043626c                SHA512_Final
+                0x0043640c                SHA512_Simple
+ .text          0x0043648c      0xa1c sshsha.o
+                0x00436524                SHATransform
+                0x00436734                SHA_Init
+                0x00436774                SHA_Bytes
+                0x00436a2c                SHA_Final
+                0x00436dc4                SHA_Simple
+                0x00436e34                hmac_sha1_simple
+ .text          0x00436ea8     0x18fc sshzlib.o
+                0x004378f8                zlib_compress_init
+                0x004379c8                zlib_decompress_init
+                0x00437b14                zlib_decompress_cleanup
+                0x00437b70                zlib_compress_cleanup
+                0x00437c2c                zlib_decompress_block
+                0x004383c4                zlib_compress_block
+ .text          0x004387a4      0x284 timing.o
+                0x00438858                schedule_timer
+                0x00438914                run_timers
+                0x00438a04                expire_timer_context
+ .text          0x00438a28     0x11cc tree234.o
+                0x0043986c                newtree234
+                0x00439894                freetree234
+                0x004398b0                count234
+                0x004398c8                add234
+                0x004398ec                addpos234
+                0x00439910                index234
+                0x0043998c                findrelpos234
+                0x00439ae4                find234
+                0x00439b18                findrel234
+                0x00439b48                findpos234
+                0x00439b78                delpos234
+                0x00439ba8                del234
+ .text          0x00439bf4        0x0 version.o
+ .text          0x00439bf4      0x2fc wildcard.o
+                0x00439d7c                wc_error
+                0x00439da4                wc_match
+                0x00439ea4                wc_unescape
+ .text          0x00439ef0      0x804 wincons.o
+                0x00439f20                cleanup_exit
+                0x00439f3c                set_busy_status
+                0x00439f44                notify_remote_exit
+                0x00439f4c                timer_change_notify
+                0x00439f54                verify_ssh_host_key
+                0x0043a128                update_specials_menu
+                0x0043a130                askalg
+                0x0043a254                askappend
+                0x0043a374                old_keyfile_warning
+                0x0043a3a4                pgp_fingerprints
+                0x0043a3d4                console_provide_logctx
+                0x0043a3e4                logevent
+                0x0043a3f8                console_get_userpass_input
+                0x0043a6ec                frontend_keypress
+ .text          0x0043a6f4       0xf8 windefs.o
+                0x0043a6f4                platform_default_fontspec
+                0x0043a758                platform_default_filename
+                0x0043a7b8                platform_default_s
+                0x0043a7e4                platform_default_i
+ .text          0x0043a7ec      0x9b8 wingss.o
+                0x0043aca4                ssh_gss_setup
+                0x0043b134                ssh_gss_cleanup
+ .text          0x0043b1a4      0xa40 winhandl.o
+                0x0043b62c                handle_input_new
+                0x0043b740                handle_output_new
+                0x0043b85c                handle_write
+                0x0043b8b8                handle_get_events
+                0x0043b950                handle_free
+                0x0043b9c8                handle_got_event
+                0x0043bb40                handle_unthrottle
+                0x0043bba0                handle_backlog
+                0x0043bbd8                handle_get_privdata
+ .text          0x0043bbe4      0x394 winmisc.o
+                0x0043bbe4                platform_get_x_display
+                0x0043bc00                filename_from_str
+                0x0043bc48                filename_to_str
+                0x0043bc50                filename_equal
+                0x0043bc78                filename_is_null
+                0x0043bc88                init_winver
+                0x0043bcb8                load_system32_dll
+                0x0043bd5c                get_username
+                0x0043bea8                dputs
+ .text          0x0043bf78     0x263c winnet.o
+                0x0043c65c                sk_startup
+                0x0043c6a4                sk_init
+                0x0043ce30                sk_cleanup
+                0x0043ceb4                winsock_error_string
+                0x0043ced8                sk_namelookup
+                0x0043d1ec                sk_nonamelookup
+                0x0043d25c                sk_nextaddr
+                0x0043d294                sk_getaddr
+                0x0043d3a4                sk_hostname_is_local
+                0x0043d3f0                sk_address_is_local
+                0x0043d4b0                sk_addrtype
+                0x0043d4ec                sk_addrcopy
+                0x0043d5b4                sk_addr_free
+                0x0043d668                sk_addr_dup
+                0x0043d674                sk_register
+                0x0043d75c                sk_new
+                0x0043d858                sk_newlistener
+                0x0043dbb4                try_send
+                0x0043dde4                select_result
+                0x0043e360                net_pending_errors
+                0x0043e3cc                sk_addr_error
+                0x0043e3d8                socket_reselect_all
+                0x0043e424                first_socket
+                0x0043e45c                next_socket
+                0x0043e490                socket_writable
+                0x0043e4d0                net_service_lookup
+                0x0043e508                get_hostname
+                0x0043e574                platform_get_x11_unix_address
+ .text          0x0043e5b4      0x2dc winnoise.o
+                0x0043e5b4                random_save_seed
+                0x0043e5fc                noise_get_heavy
+                0x0043e6b4                noise_get_light
+                0x0043e708                noise_regular
+                0x0043e834                noise_ultralight
+ .text          0x0043e890       0x18 winnojmp.o
+                0x0043e890                add_session_to_jumplist
+                0x0043e898                remove_session_from_jumplist
+                0x0043e8a0                clear_jumplist
+ .text          0x0043e8a8      0x57c winpgntc.o
+                0x0043e8a8                agent_exists
+                0x0043e8d0                init_advapi
+                0x0043e9f8                get_user_sid
+                0x0043eb8c                agent_query
+ .text          0x0043ee24      0x408 winproxy.o
+                0x0043eedc                localproxy_sentdata
+                0x0043ef08                localproxy_gotdata
+                0x0043ef9c                platform_new_connection
+ .text          0x0043f22c     0x101c winsftp.o
+                0x0043f25c                get_ttymode
+                0x0043f264                get_userpass_input
+                0x0043f2ac                platform_get_x11_auth
+                0x0043f2b4                psftp_lcd
+                0x0043f350                psftp_getcwd
+                0x0043f3b8                open_existing_file
+                0x0043f514                read_from_file
+                0x0043f558                close_rfile
+                0x0043f57c                open_new_file
+                0x0043f5ec                open_existing_wfile
+                0x0043f684                write_to_file
+                0x0043f6c8                set_file_times
+                0x0043f74c                close_wfile
+                0x0043f770                seek_file
+                0x0043f7d0                get_file_posn
+                0x0043f810                file_type
+                0x0043f838                open_directory
+                0x0043f8c4                read_filename
+                0x0043f960                close_directory
+                0x0043f990                test_wildcard
+                0x0043f9e8                begin_wildcard_matching
+                0x0043faf0                wildcard_get_filename
+                0x0043fb88                finish_wildcard_matching
+                0x0043fbc4                vet_filename
+                0x0043fc30                create_directory
+                0x0043fc58                dir_file_cat
+                0x0043fc84                do_select
+                0x0043fd3c                do_eventsel_loop
+                0x0043ff88                ssh_sftp_loop_iteration
+                0x004400f4                ssh_sftp_get_cmdline
+                0x00440224                main
+ .text          0x00440248     0x16cc winstore.o
+                0x004407b0                open_settings_w
+                0x004408c8                write_setting_s
+                0x00440918                write_setting_i
+                0x00440958                close_settings_w
+                0x0044096c                open_settings_r
+                0x00440a2c                read_setting_s
+                0x00440a84                read_setting_i
+                0x00440ae8                read_setting_fontspec
+                0x00440c0c                write_setting_fontspec
+                0x00440cd8                read_setting_filename
+                0x00440d0c                write_setting_filename
+                0x00440d30                close_settings_r
+                0x004410a4                del_settings
+                0x00441134                enum_settings_start
+                0x00441188                enum_settings_next
+                0x004412a4                enum_settings_finish
+                0x004412c8                verify_host_key
+                0x0044160c                store_host_key
+                0x004416d4                read_random_seed
+                0x00441748                write_random_seed
+                0x00441798                add_to_jumplist_registry
+                0x004417ac                remove_from_jumplist_registry
+                0x004417c0                get_jumplist_registry_entries
+                0x004417fc                cleanup_all
+ .text          0x00441914       0x88 wintime.o
+                0x00441914                ltime
+ .text          0x0044199c     0x148c x11fwd.o
+                0x00441a80                x11_setup_display
+                0x0044203c                x11_free_display
+                0x00442110                x11_get_auth_from_authfile
+                0x00442450                x11_get_screen_number
+                0x004424a4                x11_init
+                0x004425fc                x11_close
+                0x0044267c                x11_unthrottle
+                0x004426b8                x11_override_throttle
+                0x00442714                x11_send
+ .text          0x00442e28        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00412.o)
+                0x00442e28                RegOpenKeyA@12
+ .text          0x00442e30        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00423.o)
+                0x00442e30                RegQueryValueExA@24
+ .text          0x00442e38        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00386.o)
+                0x00442e38                RegCloseKey@4
+ .text          0x00442e40        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00245.o)
+                0x00442e40                GetUserNameA@8
+ .text          0x00442e48        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00196.o)
+                0x00442e48                GetLengthSid@4
+ .text          0x00442e50        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00083.o)
+                0x00442e50                CopySid@12
+ .text          0x00442e58        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00393.o)
+                0x00442e58                RegDeleteKeyA@8
+ .text          0x00442e60        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00400.o)
+                0x00442e60                RegEnumKeyA@16
+ .text          0x00442e68        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00389.o)
+                0x00442e68                RegCreateKeyA@12
+ .text          0x00442e70        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00434.o)
+                0x00442e70                RegSetValueExA@24
+ .text          0x00442e78        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00390.o)
+                0x00442e78                RegCreateKeyExA@36
+ .text          0x00442e80        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00397.o)
+                0x00442e80                RegDeleteValueA@8
+ .text          0x00442e88        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgh.o)
+ .text          0x00442e88        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgt.o)
+ .text          0x00442e88        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libuser32.a(daois00259.o)
+                0x00442e88                GetForegroundWindow@0
+ .text          0x00442e90        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libuser32.a(daois00224.o)
+                0x00442e90                GetCapture@0
+ .text          0x00442e98        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libuser32.a(daois00241.o)
+                0x00442e98                GetClipboardOwner@0
+ .text          0x00442ea0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libuser32.a(daois00310.o)
+                0x00442ea0                GetQueueStatus@4
+ .text          0x00442ea8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libuser32.a(daois00247.o)
+                0x00442ea8                GetCursorPos@4
+ .text          0x00442eb0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libuser32.a(daois00210.o)
+                0x00442eb0                FindWindowA@8
+ .text          0x00442eb8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libuser32.a(daois00508.o)
+                0x00442eb8                SendMessageA@16
+ .text          0x00442ec0        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libuser32.a(daoih.o)
+ .text          0x00442ec0        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libuser32.a(daoit.o)
+ .text          0x00442ec0      0x1d0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(tlssup.o)
+                0x00442ec0                __tlregdtor
+                0x00442f10                __dyn_tls_init@12
+ .text          0x00443090        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(CRTglob.o)
+ .text          0x00443090        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(CRTfmode.o)
+ .text          0x00443090        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(txtmode.o)
+ .text          0x00443090       0xe0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(cpu_features.o)
+                0x00443090                __cpu_features_init
+ .text          0x00443170      0x2e0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(pseudo-reloc.o)
+                0x004432a0                _pei386_runtime_relocator
+ .text          0x00443450       0xb0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(gccmain.o)
+                0x00443450                __do_global_dtors
+                0x00443480                __do_global_ctors
+                0x004434e0                __main
+ .text          0x00443500       0x10 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(CRT_fp10.o)
+                0x00443500                fpreset
+                0x00443500                _fpreset
+ .text          0x00443510        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(crtst.o)
+ .text          0x00443510      0x210 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(tlsthrd.o)
+                0x00443590                __mingw_TLScallback
+                0x00443620                ___w64_mingwthr_remove_key_dtor
+                0x004436b0                ___w64_mingwthr_add_key_dtor
+ .text          0x00443720        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(pseudo-reloc-list.o)
+ .text          0x00443720       0x34 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/libgcc.a(_chkstk.o)
+                0x00443720                _alloca
+                0x00443720                __chkstk
+ .text          0x00443754      0x124 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/libgcc.a(_umoddi3.o)
+                0x00443754                __umoddi3
+ .text          0x00443878      0x110 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/libgcc.a(_udivdi3.o)
+                0x00443878                __udivdi3
+ .text          0x00443988        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/libgcc.a(_ctors.o)
+ .text          0x00443988        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmoldname.a(dgzls00084.o)
+                0x00443988                strnicmp
+ .text          0x00443990        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmoldname.a(dgzls00081.o)
+                0x00443990                stricmp
+ .text          0x00443998        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmoldname.a(dgzlh.o)
+ .text          0x00443998        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmoldname.a(dgzlt.o)
+ .text          0x00443998        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00590.o)
+ .text          0x00443998        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00383.o)
+ .text          0x00443998        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00266.o)
+ .text          0x00443998        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00055.o)
+                0x00443998                __getmainargs
+ .text          0x004439a0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00079.o)
+                0x004439a0                __p__fmode
+ .text          0x004439a8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00077.o)
+                0x004439a8                __p__environ
+ .text          0x004439b0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00147.o)
+                0x004439b0                _cexit
+ .text          0x004439b8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00426.o)
+                0x004439b8                _setmode
+ .text          0x004439c0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00706.o)
+                0x004439c0                signal
+ .text          0x004439c8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00724.o)
+                0x004439c8                strncpy
+ .text          0x004439d0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00715.o)
+                0x004439d0                strcmp
+ .text          0x004439d8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00714.o)
+                0x004439d8                strchr
+ .text          0x004439e0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00723.o)
+                0x004439e0                strncmp
+ .text          0x004439e8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00592.o)
+                0x004439e8                atoi
+ .text          0x004439f0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00618.o)
+                0x004439f0                fopen
+ .text          0x004439f8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00611.o)
+                0x004439f8                fgetc
+ .text          0x00443a00        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00607.o)
+                0x00443a00                fclose
+ .text          0x00443a08        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00137.o)
+                0x00443a08                _assert
+ .text          0x00443a10        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00065.o)
+ .text          0x00443a10        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00392.o)
+ .text          0x00443a10        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00610.o)
+                0x00443a10                fflush
+ .text          0x00443a18        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00633.o)
+                0x00443a18                fwrite
+ .text          0x00443a20        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00720.o)
+                0x00443a20                strftime
+ .text          0x00443a28        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00742.o)
+                0x00443a28                tolower
+ .text          0x00443a30        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00619.o)
+                0x00443a30                fprintf
+ .text          0x00443a38        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00709.o)
+                0x00443a38                sprintf
+ .text          0x00443a40        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00268.o)
+                0x00443a40                _isctype
+ .text          0x00443a48        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00732.o)
+                0x00443a48                strtoul
+ .text          0x00443a50        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00731.o)
+                0x00443a50                strtol
+ .text          0x00443a58        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00676.o)
+                0x00443a58                malloc
+ .text          0x00443a60        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00717.o)
+                0x00443a60                strcpy
+ .text          0x00443a68        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00698.o)
+                0x00443a68                realloc
+ .text          0x00443a70        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00490.o)
+                0x00443a70                _vsnprintf
+ .text          0x00443a78        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00625.o)
+                0x00443a78                free
+ .text          0x00443a80        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00613.o)
+                0x00443a80                fgets
+ .text          0x00443a88        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00683.o)
+                0x00443a88                memmove
+ .text          0x00443a90        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00712.o)
+                0x00443a90                sscanf
+ .text          0x00443a98        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00692.o)
+                0x00443a98                puts
+ .text          0x00443aa0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00689.o)
+                0x00443aa0                printf
+ .text          0x00443aa8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00736.o)
+                0x00443aa8                system
+ .text          0x00443ab0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00726.o)
+                0x00443ab0                strrchr
+ .text          0x00443ab8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00727.o)
+                0x00443ab8                strspn
+ .text          0x00443ac0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00718.o)
+                0x00443ac0                strcspn
+ .text          0x00443ac8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00695.o)
+                0x00443ac8                qsort
+ .text          0x00443ad0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00621.o)
+                0x00443ad0                fputs
+ .text          0x00443ad8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00748.o)
+                0x00443ad8                vfprintf
+ .text          0x00443ae0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00604.o)
+                0x00443ae0                exit
+ .text          0x00443ae8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00681.o)
+                0x00443ae8                memcmp
+ .text          0x00443af0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00620.o)
+                0x00443af0                fputc
+ .text          0x00443af8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00680.o)
+                0x00443af8                memchr
+ .text          0x00443b00        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00583.o)
+                0x00443b00                abort
+ .text          0x00443b08        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00746.o)
+                0x00443b08                ungetc
+ .text          0x00443b10        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00624.o)
+                0x00443b10                fread
+ .text          0x00443b18        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00637.o)
+                0x00443b18                getenv
+ .text          0x00443b20        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00699.o)
+                0x00443b20                remove
+ .text          0x00443b28        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00739.o)
+                0x00443b28                time
+ .text          0x00443b30        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00538.o)
+ .text          0x00443b30        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00682.o)
+                0x00443b30                memcpy
+ .text          0x00443b38        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00595.o)
+                0x00443b38                calloc
+ .text          0x00443b40        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duymh.o)
+ .text          0x00443b40        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duymt.o)
+ .text          0x00443b40        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01140.o)
+                0x00443b40                SetUnhandledExceptionFilter@4
+ .text          0x00443b48        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00279.o)
+                0x00443b48                ExitProcess@4
+ .text          0x00443b50        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00529.o)
+                0x00443b50                GetModuleHandleA@4
+ .text          0x00443b58        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00577.o)
+                0x00443b58                GetProcAddress@8
+ .text          0x00443b60        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00656.o)
+                0x00443b60                GetTickCount@0
+ .text          0x00443b68        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01267.o)
+                0x00443b68                WriteFile@20
+ .text          0x00443b70        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00608.o)
+                0x00443b70                GetStdHandle@4
+ .text          0x00443b78        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00426.o)
+                0x00443b78                GetConsoleMode@8
+ .text          0x00443b80        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01037.o)
+                0x00443b80                SetConsoleMode@8
+ .text          0x00443b88        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00947.o)
+                0x00443b88                ReadFile@20
+ .text          0x00443b90        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00817.o)
+                0x00443b90                LoadLibraryA@4
+ .text          0x00443b98        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00352.o)
+                0x00443b98                FreeLibrary@4
+ .text          0x00443ba0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00082.o)
+                0x00443ba0                CloseHandle@4
+ .text          0x00443ba8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01065.o)
+                0x00443ba8                SetEvent@4
+ .text          0x00443bb0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01223.o)
+                0x00443bb0                WaitForSingleObject@8
+ .text          0x00443bb8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00510.o)
+                0x00443bb8                GetLastError@0
+ .text          0x00443bc0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00564.o)
+                0x00443bc0                GetOverlappedResult@16
+ .text          0x00443bc8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00129.o)
+                0x00443bc8                CreateEventA@16
+ .text          0x00443bd0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00179.o)
+                0x00443bd0                CreateThread@24
+ .text          0x00443bd8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00671.o)
+                0x00443bd8                GetVersionExA@4
+ .text          0x00443be0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00619.o)
+                0x00443be0                GetSystemDirectoryA@8
+ .text          0x00443be8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00016.o)
+                0x00443be8                AllocConsole@0
+ .text          0x00443bf0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00682.o)
+                0x00443bf0                GetWindowsDirectoryA@8
+ .text          0x00443bf8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00304.o)
+                0x00443bf8                FindFirstFileA@8
+ .text          0x00443c00        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00321.o)
+                0x00443c00                FindNextFileA@8
+ .text          0x00443c08        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00300.o)
+                0x00443c08                FindClose@4
+ .text          0x00443c10        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00447.o)
+                0x00443c10                GetCurrentProcessId@0
+ .text          0x00443c18        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00627.o)
+                0x00443c18                GetSystemTime@4
+ .text          0x00443c20        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00628.o)
+                0x00443c20                GetSystemTimeAdjustment@12
+ .text          0x00443c28        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00699.o)
+                0x00443c28                GlobalMemoryStatus@4
+ .text          0x00443c30        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00450.o)
+                0x00443c30                GetCurrentThread@0
+ .text          0x00443c38        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00653.o)
+                0x00443c38                GetThreadTimes@20
+ .text          0x00443c40        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00446.o)
+                0x00443c40                GetCurrentProcess@0
+ .text          0x00443c48        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00590.o)
+                0x00443c48                GetProcessTimes@20
+ .text          0x00443c50        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00922.o)
+                0x00443c50                QueryPerformanceCounter@4
+ .text          0x00443c58        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00885.o)
+                0x00443c58                OpenProcess@12
+ .text          0x00443c60        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00829.o)
+                0x00443c60                LocalFree@4
+ .text          0x00443c68        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00825.o)
+                0x00443c68                LocalAlloc@8
+ .text          0x00443c70        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00451.o)
+                0x00443c70                GetCurrentThreadId@0
+ .text          0x00443c78        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00136.o)
+                0x00443c78                CreateFileMappingA@24
+ .text          0x00443c80        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00844.o)
+                0x00443c80                MapViewOfFile@20
+ .text          0x00443c88        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01188.o)
+                0x00443c88                UnmapViewOfFile@4
+ .text          0x00443c90        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00160.o)
+                0x00443c90                CreatePipe@16
+ .text          0x00443c98        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01088.o)
+                0x00443c98                SetHandleInformation@12
+ .text          0x00443ca0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00163.o)
+                0x00443ca0                CreateProcessA@40
+ .text          0x00443ca8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01052.o)
+                0x00443ca8                SetCurrentDirectoryA@4
+ .text          0x00443cb0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00347.o)
+                0x00443cb0                FormatMessageA@28
+ .text          0x00443cb8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00444.o)
+                0x00443cb8                GetCurrentDirectoryA@8
+ .text          0x00443cc0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00135.o)
+                0x00443cc0                CreateFileA@28
+ .text          0x00443cc8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00492.o)
+                0x00443cc8                GetFileSize@8
+ .text          0x00443cd0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00494.o)
+                0x00443cd0                GetFileTime@16
+ .text          0x00443cd8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01082.o)
+                0x00443cd8                SetFileTime@16
+ .text          0x00443ce0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01078.o)
+                0x00443ce0                SetFilePointer@16
+ .text          0x00443ce8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00481.o)
+                0x00443ce8                GetFileAttributesA@4
+ .text          0x00443cf0        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00123.o)
+                0x00443cf0                CreateDirectoryA@8
+ .text          0x00443cf8        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01221.o)
+                0x00443cf8                WaitForMultipleObjects@16
+ .text          0x00443d00        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00473.o)
+                0x00443d00                GetEnvironmentVariableA@12
+ .text          0x00443d08        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00511.o)
+                0x00443d08                GetLocalTime@4
+ .text          0x00443d10        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01215.o)
+                0x00443d10                VirtualQuery@12
+ .text          0x00443d18        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01213.o)
+                0x00443d18                VirtualProtect@16
+ .text          0x00443d20        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01173.o)
+                0x00443d20                TlsGetValue@4
+ .text          0x00443d28        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00207.o)
+                0x00443d28                DeleteCriticalSection@4
+ .text          0x00443d30        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00734.o)
+                0x00443d30                InitializeCriticalSection@4
+ .text          0x00443d38        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00236.o)
+                0x00443d38                EnterCriticalSection@4
+ .text          0x00443d40        0x8 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00814.o)
+                0x00443d40                LeaveCriticalSection@4
+ .text          0x00443d48        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchdh.o)
+ .text          0x00443d48        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchdt.o)
+ .text          0x00443d48       0x1c d:/mingw/bin/../lib/gcc/mingw32/4.5.2/crtend.o
  *(SORT(.text$*))
  *(.text.*)
  *(.glue_7t)
  *(.glue_7)
-                0x00443c94                ___CTOR_LIST__ = .
-                0x00443c94                __CTOR_LIST__ = .
-                0x00443c94        0x4 LONG 0xffffffff
+                0x00443d64                ___CTOR_LIST__ = .
+                0x00443d64                __CTOR_LIST__ = .
+                0x00443d64        0x4 LONG 0xffffffff
  *(.ctors)
  *(.ctor)
  *(SORT(.ctors.*))
- .ctors.65535   0x00443c98        0x4 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/crtend.o
-                0x00443c9c        0x4 LONG 0x0
-                0x00443ca0                ___DTOR_LIST__ = .
-                0x00443ca0                __DTOR_LIST__ = .
-                0x00443ca0        0x4 LONG 0xffffffff
+ .ctors.65535   0x00443d68        0x4 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/crtend.o
+                0x00443d6c        0x4 LONG 0x0
+                0x00443d70                ___DTOR_LIST__ = .
+                0x00443d70                __DTOR_LIST__ = .
+                0x00443d70        0x4 LONG 0xffffffff
  *(.dtors)
  *(.dtor)
  *(SORT(.dtors.*))
-                0x00443ca4        0x4 LONG 0x0
+                0x00443d74        0x4 LONG 0x0
  *(.fini)
  *(.gcc_exc)
-                0x00443ca8                PROVIDE (etext, .)
+                0x00443d78                PROVIDE (etext, .)
  *(.gcc_except_table)
 
 .data           0x00444000      0x400
@@ -1385,24 +1384,25 @@ LOAD d:/mingw/bin/../lib/gcc/mingw32/4.5.2/crtend.o
  *(.data)
  .data          0x00444000        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../crt2.o
  .data          0x00444000        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/crtbegin.o
- .data          0x00444000        0x0 be_none.o
- .data          0x00444000        0x0 cmdline.o
- .data          0x00444000        0x0 cproxy.o
- .data          0x00444000        0x0 int64.o
- .data          0x00444000        0x0 logging.o
- .data          0x00444000        0x0 misc.o
- .data          0x00444000       0x24 pgssapi.o
-                0x00444000                GSS_C_NT_USER_NAME
-                0x00444004                GSS_C_NT_MACHINE_UID_NAME
-                0x00444008                GSS_C_NT_STRING_UID_NAME
-                0x0044400c                GSS_C_NT_HOSTBASED_SERVICE_X
-                0x00444010                GSS_C_NT_HOSTBASED_SERVICE
-                0x00444014                GSS_C_NT_ANONYMOUS
-                0x00444018                GSS_C_NT_EXPORT_NAME
- .data          0x00444024        0x0 pinger.o
- .data          0x00444024        0x0 portfwd.o
- .data          0x00444024        0x0 proxy.o
- *fill*         0x00444024       0x1c 00
+ .data          0x00444000        0x8 be_ssh.o
+                0x00444000                backends
+ .data          0x00444008        0x0 cmdline.o
+ .data          0x00444008        0x0 cproxy.o
+ .data          0x00444008        0x0 int64.o
+ .data          0x00444008        0x0 logging.o
+ .data          0x00444008        0x0 misc.o
+ .data          0x00444008       0x24 pgssapi.o
+                0x00444008                GSS_C_NT_USER_NAME
+                0x0044400c                GSS_C_NT_MACHINE_UID_NAME
+                0x00444010                GSS_C_NT_STRING_UID_NAME
+                0x00444014                GSS_C_NT_HOSTBASED_SERVICE_X
+                0x00444018                GSS_C_NT_HOSTBASED_SERVICE
+                0x0044401c                GSS_C_NT_ANONYMOUS
+                0x00444020                GSS_C_NT_EXPORT_NAME
+ .data          0x0044402c        0x0 pinger.o
+ .data          0x0044402c        0x0 portfwd.o
+ .data          0x0044402c        0x0 proxy.o
+ *fill*         0x0044402c       0x14 00
  .data          0x00444040      0x240 psftp.o
  .data          0x00444280        0x0 settings.o
  .data          0x00444280        0x0 sftp.o
@@ -1432,310 +1432,312 @@ LOAD d:/mingw/bin/../lib/gcc/mingw32/4.5.2/crtend.o
  .data          0x00444354        0x0 sshzlib.o
  .data          0x00444354        0x0 timing.o
  .data          0x00444354        0x0 tree234.o
- *fill*         0x00444354        0xc 00
- .data          0x00444360       0x80 version.o
-                0x00444360                ver
-                0x004443a0                sshver
- .data          0x004443e0        0x0 wildcard.o
- .data          0x004443e0        0x0 wincons.o
- .data          0x004443e0        0x0 windefs.o
- .data          0x004443e0        0x0 wingss.o
- .data          0x004443e0        0x0 winhandl.o
- .data          0x004443e0        0x4 winmisc.o
- .data          0x004443e4        0x0 winnet.o
- .data          0x004443e4        0x0 winnoise.o
- .data          0x004443e4        0x0 winnojmp.o
- .data          0x004443e4        0x0 winpgntc.o
- .data          0x004443e4        0x0 winproxy.o
- .data          0x004443e4        0x8 winsftp.o
- .data          0x004443ec        0x0 winstore.o
- .data          0x004443ec        0x0 wintime.o
- .data          0x004443ec        0x0 x11fwd.o
- .data          0x004443ec        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00412.o)
- .data          0x004443ec        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00423.o)
- .data          0x004443ec        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00386.o)
- .data          0x004443ec        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00245.o)
- .data          0x004443ec        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00196.o)
- .data          0x004443ec        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00083.o)
- .data          0x004443ec        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00393.o)
- .data          0x004443ec        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00400.o)
- .data          0x004443ec        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00389.o)
- .data          0x004443ec        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00434.o)
- .data          0x004443ec        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00390.o)
- .data          0x004443ec        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00397.o)
- .data          0x004443ec        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgh.o)
- .data          0x004443ec        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgt.o)
- .data          0x004443ec        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libuser32.a(daois00259.o)
- .data          0x004443ec        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libuser32.a(daois00224.o)
- .data          0x004443ec        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libuser32.a(daois00241.o)
- .data          0x004443ec        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libuser32.a(daois00310.o)
- .data          0x004443ec        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libuser32.a(daois00247.o)
- .data          0x004443ec        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libuser32.a(daois00210.o)
- .data          0x004443ec        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libuser32.a(daois00508.o)
- .data          0x004443ec        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libuser32.a(daoih.o)
- .data          0x004443ec        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libuser32.a(daoit.o)
- .data          0x004443ec        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(tlssup.o)
- .data          0x004443ec        0x4 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(CRTglob.o)
-                0x004443ec                _CRT_glob
- .data          0x004443f0        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(CRTfmode.o)
- .data          0x004443f0        0x4 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(txtmode.o)
-                0x004443f0                _fmode
- .data          0x004443f4        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(cpu_features.o)
- .data          0x004443f4        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(pseudo-reloc.o)
- .data          0x004443f4        0x4 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(gccmain.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(CRT_fp10.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(crtst.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(tlsthrd.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(pseudo-reloc-list.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/libgcc.a(_chkstk.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/libgcc.a(_umoddi3.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/libgcc.a(_udivdi3.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/libgcc.a(_ctors.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmoldname.a(dgzls00084.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmoldname.a(dgzls00081.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmoldname.a(dgzlh.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmoldname.a(dgzlt.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00590.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00383.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00266.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00099.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00055.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00079.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00077.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00147.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00426.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00706.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00724.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00715.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00714.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00723.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00592.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00618.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00611.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00607.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00137.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00065.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00392.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00610.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00633.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00720.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00742.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00619.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00709.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00268.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00732.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00731.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00676.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00717.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00698.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00490.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00625.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00613.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00683.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00712.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00692.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00689.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00736.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00726.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00727.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00718.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00695.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00621.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00748.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00604.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00681.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00620.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00680.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00583.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00746.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00624.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00637.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00699.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00739.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00538.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00682.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00595.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duymh.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duymt.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01140.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00279.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00529.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00577.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00656.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01267.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00608.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00426.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01037.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00947.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00817.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00352.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00082.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01065.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01223.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00510.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00564.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00129.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00179.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00671.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00619.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00016.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00682.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00304.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00321.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00300.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00447.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00627.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00628.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00699.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00450.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00653.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00446.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00590.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00922.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00885.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00829.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00825.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00451.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00136.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00844.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01188.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00160.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01088.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00163.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01052.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00347.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00444.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00135.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00492.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00494.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01082.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01078.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00481.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00123.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01221.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00473.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00511.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01215.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01213.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01173.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00207.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00734.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00236.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00814.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchdh.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchdt.o)
- .data          0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/crtend.o
+ .data          0x00444354       0x20 version.o
+                0x00444354                ver
+                0x00444361                sshver
+ .data          0x00444374        0x0 wildcard.o
+ .data          0x00444374        0x0 wincons.o
+ .data          0x00444374        0x0 windefs.o
+ .data          0x00444374        0x0 wingss.o
+ .data          0x00444374        0x0 winhandl.o
+ .data          0x00444374        0x4 winmisc.o
+ .data          0x00444378        0x0 winnet.o
+ .data          0x00444378        0x0 winnoise.o
+ .data          0x00444378        0x0 winnojmp.o
+ .data          0x00444378        0x0 winpgntc.o
+ .data          0x00444378        0x0 winproxy.o
+ .data          0x00444378        0x8 winsftp.o
+ .data          0x00444380        0x0 winstore.o
+ .data          0x00444380        0x0 wintime.o
+ .data          0x00444380        0x0 x11fwd.o
+ .data          0x00444380        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00412.o)
+ .data          0x00444380        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00423.o)
+ .data          0x00444380        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00386.o)
+ .data          0x00444380        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00245.o)
+ .data          0x00444380        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00196.o)
+ .data          0x00444380        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00083.o)
+ .data          0x00444380        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00393.o)
+ .data          0x00444380        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00400.o)
+ .data          0x00444380        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00389.o)
+ .data          0x00444380        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00434.o)
+ .data          0x00444380        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00390.o)
+ .data          0x00444380        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgs00397.o)
+ .data          0x00444380        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgh.o)
+ .data          0x00444380        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libadvapi32.a(dgxgt.o)
+ .data          0x00444380        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libuser32.a(daois00259.o)
+ .data          0x00444380        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libuser32.a(daois00224.o)
+ .data          0x00444380        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libuser32.a(daois00241.o)
+ .data          0x00444380        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libuser32.a(daois00310.o)
+ .data          0x00444380        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libuser32.a(daois00247.o)
+ .data          0x00444380        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libuser32.a(daois00210.o)
+ .data          0x00444380        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libuser32.a(daois00508.o)
+ .data          0x00444380        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libuser32.a(daoih.o)
+ .data          0x00444380        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libuser32.a(daoit.o)
+ .data          0x00444380        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(tlssup.o)
+ .data          0x00444380        0x4 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(CRTglob.o)
+                0x00444380                _CRT_glob
+ .data          0x00444384        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(CRTfmode.o)
+ .data          0x00444384        0x4 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(txtmode.o)
+                0x00444384                _fmode
+ .data          0x00444388        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(cpu_features.o)
+ .data          0x00444388        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(pseudo-reloc.o)
+ .data          0x00444388        0x4 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(gccmain.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(CRT_fp10.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(crtst.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(tlsthrd.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(pseudo-reloc-list.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/libgcc.a(_chkstk.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/libgcc.a(_umoddi3.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/libgcc.a(_udivdi3.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/libgcc.a(_ctors.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmoldname.a(dgzls00084.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmoldname.a(dgzls00081.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmoldname.a(dgzlh.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmoldname.a(dgzlt.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00590.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00383.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00266.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00099.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00055.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00079.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00077.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00147.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00426.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00706.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00724.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00715.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00714.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00723.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00592.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00618.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00611.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00607.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00137.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00065.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00392.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00610.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00633.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00720.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00742.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00619.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00709.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00268.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00732.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00731.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00676.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00717.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00698.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00490.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00625.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00613.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00683.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00712.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00692.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00689.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00736.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00726.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00727.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00718.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00695.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00621.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00748.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00604.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00681.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00620.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00680.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00583.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00746.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00624.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00637.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00699.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00739.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00538.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00682.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duyms00595.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duymh.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmsvcrt.a(duymt.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01140.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00279.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00529.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00577.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00656.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01267.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00608.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00426.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01037.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00947.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00817.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00352.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00082.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01065.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01223.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00510.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00564.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00129.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00179.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00671.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00619.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00016.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00682.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00304.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00321.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00300.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00447.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00627.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00628.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00699.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00450.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00653.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00446.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00590.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00922.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00885.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00829.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00825.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00451.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00136.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00844.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01188.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00160.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01088.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00163.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01052.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00347.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00444.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00135.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00492.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00494.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01082.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01078.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00481.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00123.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01221.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00473.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00511.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01215.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01213.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds01173.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00207.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00734.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00236.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchds00814.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchdh.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libkernel32.a(dchdt.o)
+ .data          0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/crtend.o
  *(.data2)
  *(SORT(.data$*))
  *(.jcr)
- .jcr           0x004443f8        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/crtbegin.o
- .jcr           0x004443f8        0x4 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/crtend.o
-                0x004443fc                __data_end__ = .
+ .jcr           0x0044438c        0x0 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/crtbegin.o
+ .jcr           0x0044438c        0x4 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/crtend.o
+                0x00444390                __data_end__ = .
  *(.data_cygwin_nocopy)
 
 .rdata          0x00445000    0x11400
  *(.rdata)
  .rdata         0x00445000       0x64 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/crtbegin.o
- .rdata         0x00445064      0x21c cmdline.o
- .rdata         0x00445280      0x140 cproxy.o
- .rdata         0x004453c0       0x1c int64.o
- .rdata         0x004453dc      0x264 logging.o
- .rdata         0x00445640      0x1e0 misc.o
- .rdata         0x00445820       0xc0 pgssapi.o
-                0x00445820                GSS_MECH_KRB5
- .rdata         0x004458e0       0x54 portfwd.o
- *fill*         0x00445934        0xc 00
- .rdata         0x00445940      0x600 proxy.o
- .rdata         0x00445f40     0x25e8 psftp.o
-                0x00446dfc                appname
- *fill*         0x00448528       0x18 00
- .rdata         0x00448540      0xf80 settings.o
-                0x00449000                ttymodes
- .rdata         0x004494c0      0x3c0 sftp.o
- .rdata         0x00449880     0x4280 ssh.o
- .rdata         0x0044db00     0x2520 sshaes.o
-                0x0044db4c                ssh2_aes
- .rdata         0x00450020       0xe0 ssharcf.o
-                0x00450060                ssh_arcfour128_ssh2
-                0x004500c0                ssh_arcfour256_ssh2
-                0x004500ec                ssh2_arcfour
- .rdata         0x00450100     0x1180 sshblowf.o
-                0x00450130                ssh_blowfish_ssh1
-                0x0045014c                ssh2_blowfish
- .rdata         0x00451280       0x44 sshbn.o
- *fill*         0x004512c4       0x1c 00
- .rdata         0x004512e0      0x400 sshcrc.o
- .rdata         0x004516e0       0x58 sshcrcda.o
- *fill*         0x00451738        0x8 00
- .rdata         0x00451740      0xc20 sshdes.o
-                0x0045175c                ssh2_3des
-                0x00451764                ssh2_des
-                0x00451784                ssh_3des
-                0x004517b0                ssh_des
- .rdata         0x00452360      0x340 sshdh.o
-                0x00452360                ssh_diffiehellman_group1
-                0x00452368                ssh_diffiehellman_group14
-                0x00452370                ssh_diffiehellman_gex
- .rdata         0x004526a0       0xe0 sshdss.o
-                0x00452720                ssh_dss
- .rdata         0x00452780        0x8 sshgssc.o
- *fill*         0x00452788       0x18 00
- .rdata         0x004527a0       0x60 sshmd5.o
-                0x004527c0                ssh_hmac_md5
- .rdata         0x00452800      0x324 sshpubk.o
- .rdata         0x00452b24       0x20 sshrand.o
- *fill*         0x00452b44       0x1c 00
- .rdata         0x00452b60      0x1c0 sshrsa.o
-                0x00452c40                ssh_rsa
-                0x00452c78                ssh_rsa_kex
- .rdata         0x00452d20      0x120 sshsh256.o
-                0x00452d28                ssh_sha256
- .rdata         0x00452e40      0x2c0 sshsh512.o
- .rdata         0x00453100      0x1a0 sshsha.o
-                0x00453108                ssh_sha1
-                0x00453140                ssh_hmac_sha1
-                0x004531a0                ssh_hmac_sha1_96
-                0x00453200                ssh_hmac_sha1_buggy
-                0x00453260                ssh_hmac_sha1_96_buggy
- .rdata         0x004532a0      0x4e0 sshzlib.o
-                0x00453360                ssh_zlib
- .rdata         0x00453780       0x40 tree234.o
- .rdata         0x004537c0       0xfc wildcard.o
- *fill*         0x004538bc        0x4 00
- .rdata         0x004538c0      0xce0 wincons.o
- .rdata         0x004545a0       0x38 windefs.o
- *fill*         0x004545d8        0x8 00
- .rdata         0x004545e0      0x5e0 wingss.o
-                0x00454b08                ngsslibs
-                0x00454b5c                gsslibnames
-                0x00454b80                gsslibkeywords
-                0x00454bb0                gss_mech_krb5
- .rdata         0x00454bc0       0x58 winhandl.o
- .rdata         0x00454c18       0x34 winmisc.o
- *fill*         0x00454c4c       0x14 00
- .rdata         0x00454c60      0xc40 winnet.o
-                0x0045506c                in6addr_any
-                0x0045507c                in6addr_loopback
- .rdata         0x004558a0       0x98 winpgntc.o
- *fill*         0x00455938        0x8 00
- .rdata         0x00455940       0xc0 winproxy.o
- .rdata         0x00455a00       0xe0 winsftp.o
-                0x00455a90                platform_uses_x11_unix_by_default
- .rdata         0x00455ae0      0x3d4 winstore.o
- .rdata         0x00455eb4      0x280 x11fwd.o
-                0x004560fc                x11_authnames
- .rdata         0x00456134       0x40 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(tlssup.o)
-                0x00456170                __dyn_tls_init_callback
- .rdata         0x00456174       0xac d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(pseudo-reloc.o)
+ .rdata         0x00445064        0x4 be_ssh.o
+                0x00445064                be_default_protocol
+ .rdata         0x00445068      0x21c cmdline.o
+ .rdata         0x00445284      0x140 cproxy.o
+ .rdata         0x004453c4       0x1c int64.o
+ .rdata         0x004453e0      0x264 logging.o
+ *fill*         0x00445644       0x1c 00
+ .rdata         0x00445660      0x1e0 misc.o
+ .rdata         0x00445840       0xc0 pgssapi.o
+                0x00445840                GSS_MECH_KRB5
+ .rdata         0x00445900       0x54 portfwd.o
+ *fill*         0x00445954        0xc 00
+ .rdata         0x00445960      0x600 proxy.o
+ .rdata         0x00445f60     0x25e8 psftp.o
+                0x00446e1c                appname
+ *fill*         0x00448548       0x18 00
+ .rdata         0x00448560      0xf80 settings.o
+                0x00449020                ttymodes
+ .rdata         0x004494e0      0x3c0 sftp.o
+ .rdata         0x004498a0     0x43c0 ssh.o
+ .rdata         0x0044dc60     0x2520 sshaes.o
+                0x0044dcac                ssh2_aes
+ .rdata         0x00450180       0xe0 ssharcf.o
+                0x004501c0                ssh_arcfour128_ssh2
+                0x00450220                ssh_arcfour256_ssh2
+                0x0045024c                ssh2_arcfour
+ .rdata         0x00450260     0x1180 sshblowf.o
+                0x00450290                ssh_blowfish_ssh1
+                0x004502ac                ssh2_blowfish
+ .rdata         0x004513e0       0x44 sshbn.o
+ *fill*         0x00451424       0x1c 00
+ .rdata         0x00451440      0x400 sshcrc.o
+ .rdata         0x00451840       0x58 sshcrcda.o
+ *fill*         0x00451898        0x8 00
+ .rdata         0x004518a0      0xc20 sshdes.o
+                0x004518bc                ssh2_3des
+                0x004518c4                ssh2_des
+                0x004518e4                ssh_3des
+                0x00451910                ssh_des
+ .rdata         0x004524c0      0x340 sshdh.o
+                0x004524c0                ssh_diffiehellman_group1
+                0x004524c8                ssh_diffiehellman_group14
+                0x004524d0                ssh_diffiehellman_gex
+ .rdata         0x00452800       0xe0 sshdss.o
+                0x00452880                ssh_dss
+ .rdata         0x004528e0        0x8 sshgssc.o
+ *fill*         0x004528e8       0x18 00
+ .rdata         0x00452900       0x60 sshmd5.o
+                0x00452920                ssh_hmac_md5
+ .rdata         0x00452960      0x324 sshpubk.o
+ .rdata         0x00452c84       0x20 sshrand.o
+ *fill*         0x00452ca4       0x1c 00
+ .rdata         0x00452cc0      0x1c0 sshrsa.o
+                0x00452da0                ssh_rsa
+                0x00452dd8                ssh_rsa_kex
+ .rdata         0x00452e80      0x120 sshsh256.o
+                0x00452e88                ssh_sha256
+ .rdata         0x00452fa0      0x2c0 sshsh512.o
+ .rdata         0x00453260      0x1a0 sshsha.o
+                0x00453268                ssh_sha1
+                0x004532a0                ssh_hmac_sha1
+                0x00453300                ssh_hmac_sha1_96
+                0x00453360                ssh_hmac_sha1_buggy
+                0x004533c0                ssh_hmac_sha1_96_buggy
+ .rdata         0x00453400      0x4e0 sshzlib.o
+                0x004534c0                ssh_zlib
+ .rdata         0x004538e0       0x40 tree234.o
+ .rdata         0x00453920       0xfc wildcard.o
+ *fill*         0x00453a1c        0x4 00
+ .rdata         0x00453a20      0xce0 wincons.o
+ .rdata         0x00454700       0x38 windefs.o
+ *fill*         0x00454738        0x8 00
+ .rdata         0x00454740      0x5e0 wingss.o
+                0x00454c68                ngsslibs
+                0x00454cbc                gsslibnames
+                0x00454ce0                gsslibkeywords
+                0x00454d10                gss_mech_krb5
+ .rdata         0x00454d20       0x58 winhandl.o
+ .rdata         0x00454d78       0x34 winmisc.o
+ *fill*         0x00454dac       0x14 00
+ .rdata         0x00454dc0      0xc40 winnet.o
+                0x004551cc                in6addr_any
+                0x004551dc                in6addr_loopback
+ .rdata         0x00455a00       0x98 winpgntc.o
+ *fill*         0x00455a98        0x8 00
+ .rdata         0x00455aa0       0xc0 winproxy.o
+ .rdata         0x00455b60       0xe0 winsftp.o
+                0x00455bf0                platform_uses_x11_unix_by_default
+ .rdata         0x00455c40      0x3d4 winstore.o
+ .rdata         0x00456014      0x280 x11fwd.o
+                0x0045625c                x11_authnames
+ .rdata         0x00456294       0x40 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(tlssup.o)
+                0x004562d0                __dyn_tls_init_callback
+ .rdata         0x004562d4       0xac d:/mingw/bin/../lib/gcc/mingw32/4.5.2/../../../libmingw32.a(pseudo-reloc.o)
  *(SORT(.rdata$*))
-                0x00456220                __rt_psrelocs_start = .
+                0x00456380                __rt_psrelocs_start = .
  *(.rdata_runtime_pseudo_reloc)
-                0x00456220                __rt_psrelocs_end = .
+                0x00456380                __rt_psrelocs_end = .
                 0x00000000                __rt_psrelocs_size = (__rt_psrelocs_end - __rt_psrelocs_start)
-                0x00456220                ___RUNTIME_PSEUDO_RELOC_LIST_END__ = .
-                0x00456220                __RUNTIME_PSEUDO_RELOC_LIST_END__ = .
-                0x00456220                ___RUNTIME_PSEUDO_RELOC_LIST__ = (. - __rt_psrelocs_size)
-                0x00456220                __RUNTIME_PSEUDO_RELOC_LIST__ = (. - __rt_psrelocs_size)
+                0x00456380                ___RUNTIME_PSEUDO_RELOC_LIST_END__ = .
+                0x00456380                __RUNTIME_PSEUDO_RELOC_LIST_END__ = .
+                0x00456380                ___RUNTIME_PSEUDO_RELOC_LIST__ = (. - __rt_psrelocs_size)
+                0x00456380                __RUNTIME_PSEUDO_RELOC_LIST__ = (. - __rt_psrelocs_size)
 
 .eh_frame       0x00457000      0x200
  *(.eh_frame*)
@@ -1754,19 +1756,18 @@ LOAD d:/mingw/bin/../lib/gcc/mingw32/4.5.2/crtend.o
                 0x00458000                _argc
                 0x00458004                _argv
  .bss           0x00458008       0x18 d:/mingw/bin/../lib/gcc/mingw32/4.5.2/crtbegin.o
- .bss           0x00458020        0x4 be_none.o
-                0x00458020                backends
- .bss           0x00458024       0x24 cmdline.o
-                0x00458024                cmdline_tooltype
- .bss           0x00458048        0x0 cproxy.o
- .bss           0x00458048        0x0 int64.o
- .bss           0x00458048        0x0 logging.o
- .bss           0x00458048        0x0 misc.o
- .bss           0x00458048        0x0 pgssapi.o
- .bss           0x00458048        0x0 pinger.o
- .bss           0x00458048        0x0 portfwd.o
- .bss           0x00458048        0x0 proxy.o
- *fill*         0x00458048       0x18 00
+ .bss           0x00458020        0x0 be_ssh.o
+ .bss           0x00458020       0x24 cmdline.o
+                0x00458020                cmdline_tooltype
+ .bss           0x00458044        0x0 cproxy.o
+ .bss           0x00458044        0x0 int64.o
+ .bss           0x00458044        0x0 logging.o
+ .bss           0x00458044        0x0 misc.o
+ .bss           0x00458044        0x0 pgssapi.o
+ .bss           0x00458044        0x0 pinger.o
+ .bss           0x00458044        0x0 portfwd.o
+ .bss           0x00458044        0x0 proxy.o
+ *fill*         0x00458044       0x1c 00
  .bss           0x00458060     0x2c00 psftp.o
  .bss           0x0045ac60        0x0 settings.o
  .bss           0x0045ac60        0xc sftp.o

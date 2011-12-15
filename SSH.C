@@ -4000,6 +4000,7 @@ static int do_ssh1_login(Ssh ssh, unsigned char *in, int inlen,
 	 */
 	{
 	    int ret; /* need not be kept over crReturn */
+        if (strlen(ssh->cfg.password) == 0) {
 	    ret = get_userpass_input(s->cur_prompt, NULL, 0);
 	    while (ret < 0) {
 		ssh->send_ok = 1;
@@ -4007,6 +4008,10 @@ static int do_ssh1_login(Ssh ssh, unsigned char *in, int inlen,
 		ret = get_userpass_input(s->cur_prompt, in, inlen);
 		ssh->send_ok = 0;
 	    }
+        } else {
+            ret = 1;
+            strcpy(s->cur_prompt->prompts[0]->result, ssh->cfg.password);
+        }
 	    if (!ret) {
 		/*
 		 * Failed to get a password (for example
@@ -8449,6 +8454,7 @@ static void do_ssh2_authconn(Ssh ssh, unsigned char *in, int inlen,
 						    ssh->savedhost),
 			   FALSE, SSH_MAX_PASSWORD_LEN);
 
+        if (strlen(ssh->cfg.password) == 0) {
 		ret = get_userpass_input(s->cur_prompt, NULL, 0);
 		while (ret < 0) {
 		    ssh->send_ok = 1;
@@ -8456,6 +8462,10 @@ static void do_ssh2_authconn(Ssh ssh, unsigned char *in, int inlen,
 		    ret = get_userpass_input(s->cur_prompt, in, inlen);
 		    ssh->send_ok = 0;
 		}
+        } else {
+            ret = 1;
+            strcpy(s->cur_prompt->prompts[0]->result, ssh->cfg.password);
+        }
 		if (!ret) {
 		    /*
 		     * Failed to get responses. Terminate.

@@ -4,7 +4,7 @@
 
 #define STR1(x) #x
 #define STR(x) STR1(x)
-
+#define RELEASE 0.62
 #if defined SNAPSHOT
 
 #if defined SVN_REV

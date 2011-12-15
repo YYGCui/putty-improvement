@@ -74,6 +74,7 @@
 #define WINHELP_CTX_connection_termtype "connection.termtype:config-termtype"
 #define WINHELP_CTX_connection_termspeed "connection.termspeed:config-termspeed"
 #define WINHELP_CTX_connection_username "connection.username:config-username"
+#define WINHELP_CTX_connection_password "connection.password:config-password"
 #define WINHELP_CTX_connection_username_from_env "connection.usernamefromenv:config-username-from-env"
 #define WINHELP_CTX_connection_keepalive "connection.keepalive:config-keepalive"
 #define WINHELP_CTX_connection_nodelay "connection.nodelay:config-nodelay"
